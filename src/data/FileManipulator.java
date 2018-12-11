@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Scanner;
 
 public class FileManipulator {
 	
@@ -37,21 +36,36 @@ public class FileManipulator {
      * Reads file which is in given path
      * @param path file path
      * @return file content
-     * @throws FileNotFoundException
+     * @throws IOException
      */
     public String readFile(String path) {
-    	Scanner in;
-		try {
-			in = new Scanner(new FileReader(path));
-	    	StringBuilder sb = new StringBuilder();
-	        while (in.hasNext()) {
-	            sb.append(in.next());
-	        }
-	        in.close();
-	        return sb.toString();
-		} catch (FileNotFoundException e) {
-			System.out.println("Given file name : " + path + " not found!\n");
-			return null;
-		}
+        String content = null;
+        File file = new File(path);
+        FileReader reader = null;
+        
+        if (file.exists()) {
+            try {
+                reader = new FileReader(file);
+                char[] chars = new char[(int) file.length()];
+                reader.read(chars);
+                content = new String(chars);
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if(reader != null){
+                    try {
+    					reader.close();
+    				} catch (IOException e) {
+    					e.printStackTrace();
+    				}
+                }
+            }
+        }
+        else {
+        	System.out.println("Given path : " + path + " not found!\n");
+        }
+        
+        return content;
     }
 }

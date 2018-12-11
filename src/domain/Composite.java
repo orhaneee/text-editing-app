@@ -13,8 +13,15 @@ public class Composite implements IComponent {
 
 	@Override
 	public void operation(String s) {
-		// TODO Auto-generated method stub
 		
+	}
+	
+	public void addComponent(IComponent component) {
+		componentList.add(component);
+	}
+	
+	public void removeComponent(IComponent component) {
+		componentList.remove(component);
 	}
 	
 }

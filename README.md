@@ -3,7 +3,7 @@
 
 ## Requirements
 
-- JDK 1.8+
+- JDK 10+
 - Eclipse or terminal.
 
 ## Running from command line with ANSI colors

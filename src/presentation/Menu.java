@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import data.FileManipulator;
 import domain.AutoCorrector;
+import domain.Composite;
 import domain.Counter;
 import domain.IComponent;
 import domain.TextSaver;
@@ -50,6 +51,10 @@ public class Menu {
 				+ "4. Search, list, and count the words containing inputted characters");
 	}
 	
+	public void showSubmenu() {
+		System.out.println("\nPlease enter characters to search, list and count.");
+	}
+	
 	public void processMenuChoice(int choice) {
 		switch (choice) {
 		case 1:
@@ -66,6 +71,10 @@ public class Menu {
 			counter.operation(userEntry);
 			break;
 		case 4:
+			showSubmenu();
+			String characters = getString();
+			IComponent composite = new Composite();
+			IComponent counter = new Counter();
 			break;
 		default:
 			System.out.println("Wrong choice!\n");
