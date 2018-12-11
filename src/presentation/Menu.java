@@ -3,6 +3,7 @@ package presentation;
 import java.util.Scanner;
 
 import data.FileManipulator;
+import domain.AutoCorrector;
 import domain.Counter;
 import domain.IComponent;
 import domain.TextSaver;
@@ -38,7 +39,7 @@ public class Menu {
 					+ "For file choice, the file MUST be in the same folder\n"
 					+ "with project!");
 			
-			processChoice(getInput());
+			processInputChoice(getInput());
 		}
 	}
 	
@@ -52,33 +53,34 @@ public class Menu {
 	public void processMenuChoice(int choice) {
 		switch (choice) {
 		case 1:
-			String input1 = getString();
 			IComponent textSaver = new TextSaver();
-			textSaver.operation(input1);
-			System.out.println("Your text was saved as SavedText.txt");
+			textSaver.operation(userEntry);
+			System.out.println("Your text was saved as SavedText.txt\n");
 			break;
 		case 2:
+			IComponent autoCorrector = new AutoCorrector();
+			autoCorrector.operation(userEntry);
 			break;
 		case 3:
-			String input3 = getString();
 			IComponent counter = new Counter();
-			counter.operation(input3);
+			counter.operation(userEntry);
 			break;
 		case 4:
 			break;
 		default:
-			System.out.println("Wrong choice!");
+			System.out.println("Wrong choice!\n");
 			break;
 		}
 	}
 	
-	public void processChoice(int choice) {
+	public void processInputChoice(int choice) {
 		switch (choice) {
 		case 1:
 			System.out.println("Please enter the text!");
 			userEntry = getString();
 			if (userEntry.length() > 0) {
 				showMenu();
+				processMenuChoice(getInput());
 			}
 			else {
 				System.out.println("You entered nothing!");
@@ -90,6 +92,7 @@ public class Menu {
 			if (fileManipulator.readFile(name) != null) {
 				userEntry = fileManipulator.readFile(name);
 				showMenu();
+				processMenuChoice(getInput());
 			}
 			break;
 		}
