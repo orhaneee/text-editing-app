@@ -6,11 +6,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
 
+/**
+ * This class is required for TextSaver and Menu classes.
+ * It writes and reads from file system.
+ *
+ */
 public class FileManipulator {
 	
     /**
-     * Writing directly to a file with current date.
-     * @param content JSON string passed from Project Manager.
+     * Writing directly to a file
+     * @param content user input
      */
     public void writeToFile(String content) {
         OutputStream os = null;
@@ -23,8 +28,8 @@ public class FileManipulator {
         }
         finally {
             try {
-                assert os != null;
-                os.close();
+                if (os != null)
+                	os.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

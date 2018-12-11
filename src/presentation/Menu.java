@@ -9,6 +9,10 @@ import domain.Counter;
 import domain.IComponent;
 import domain.TextSaver;
 
+/**
+ * User interaction with command line.
+ *
+ */
 public class Menu {
 	
 	private Scanner scanner;

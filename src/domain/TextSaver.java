@@ -2,6 +2,11 @@ package domain;
 
 import data.FileManipulator;
 
+/**
+ * Saves the text to file system
+ * with the help of FileManipulator class.
+ *
+ */
 public class TextSaver implements IComponent {
 
 	public TextSaver() {}

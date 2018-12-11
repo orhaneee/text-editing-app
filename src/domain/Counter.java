@@ -1,5 +1,10 @@
 package domain;
 
+/**
+ * Counts lines, words, paragraphs and characters
+ * in a given string.
+ *
+ */
 public class Counter implements IComponent {
 	
 	public Counter() {}

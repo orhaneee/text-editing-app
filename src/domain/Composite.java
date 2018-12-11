@@ -3,6 +3,12 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Composite class which may have list of
+ * components. Its responsibility is 4th
+ * choice.
+ *
+ */
 public class Composite implements IComponent {
 	
 	private List<IComponent> componentList;
