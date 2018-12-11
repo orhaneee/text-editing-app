@@ -1,19 +1,17 @@
 package domain;
 
+import data.FileManipulator;
+
 public class TextSaver implements IComponent {
 
-	/**
-	 * 
-	 * As its main role, it saves the text.
-	 * @param void
-	 * @return void
-	 */
-	@Override
-	public void operation() {
-	}
+	public TextSaver() {}
 	
-	public TextSaver() {
-		
+	@Override
+	public void operation(String s) {
+		if (s.length() > 0 && s != null) {
+			FileManipulator fileManipulator = new FileManipulator();
+			fileManipulator.writeToFile(s);
+		}
 	}
 
 }

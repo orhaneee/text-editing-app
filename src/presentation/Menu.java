@@ -3,6 +3,9 @@ package presentation;
 import java.util.Scanner;
 
 import data.FileManipulator;
+import domain.Counter;
+import domain.IComponent;
+import domain.TextSaver;
 
 public class Menu {
 	
@@ -39,13 +42,43 @@ public class Menu {
 		}
 	}
 	
+	public void showMenu() {
+		System.out.println("\n1. Take text input from user and save it into a file\n"
+				+ "2. Perform automatic text correction of a given text\n"
+				+ "3. Count number of paragraph, line, word, and characters of a given text\n"
+				+ "4. Search, list, and count the words containing inputted characters");
+	}
+	
+	public void processMenuChoice(int choice) {
+		switch (choice) {
+		case 1:
+			String input1 = getString();
+			IComponent textSaver = new TextSaver();
+			textSaver.operation(input1);
+			System.out.println("Your text was saved as SavedText.txt");
+			break;
+		case 2:
+			break;
+		case 3:
+			String input3 = getString();
+			IComponent counter = new Counter();
+			counter.operation(input3);
+			break;
+		case 4:
+			break;
+		default:
+			System.out.println("Wrong choice!");
+			break;
+		}
+	}
+	
 	public void processChoice(int choice) {
 		switch (choice) {
 		case 1:
 			System.out.println("Please enter the text!");
 			userEntry = getString();
 			if (userEntry.length() > 0) {
-				
+				showMenu();
 			}
 			else {
 				System.out.println("You entered nothing!");
@@ -56,6 +89,7 @@ public class Menu {
 			String name = getString();
 			if (fileManipulator.readFile(name) != null) {
 				userEntry = fileManipulator.readFile(name);
+				showMenu();
 			}
 			break;
 		}
