@@ -15,7 +15,7 @@ public class AutoCorrector implements IComponent {
 	public void operation(String s) {
 		String[] words = s.split("\\W+");
 		
-		for(String word : words) {
+		for (String word : words) {
 			String result = autoCorrection.autoCorrect(word.trim());
 			System.out.println("\n" + word + " -> " + result);
 		}

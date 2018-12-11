@@ -73,8 +73,11 @@ public class Menu {
 		case 4:
 			showSubmenu();
 			String characters = getString();
-			IComponent composite = new Composite();
-			IComponent counter = new Counter();
+			Composite composite = new Composite();
+			composite.setSearchCharacters(characters);
+			IComponent characterCounter = new Counter();
+			composite.addComponent(characterCounter);
+			composite.operation(userEntry);
 			break;
 		default:
 			System.out.println("Wrong choice!\n");
